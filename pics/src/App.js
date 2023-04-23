@@ -1,25 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import SearchBar from "./components/SearchBar";
+import searchImages from "./api";
+import ImageList from "./components/ImageList";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const handleSubmit = async (term) => {
+    const results = await searchImages(term);
+  }
+
+  return <div>
+    <SearchBar onSubmit={handleSubmit}/>
+    <ImageList />
+  </div>
 }
 
 export default App;
+
+
+
+//AccessKey: ykRr-TruivY7oJ7oWw8W0Njc4GzIRRnYClhiHnZoLtM
+//SecretKey: D6VYH2UXpJ-FgK027C8mHBsYCBxd4B0jc6c8Zi6COvc
