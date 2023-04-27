@@ -7,7 +7,7 @@ function BookEdit({book, onSubmit}) {
   };
 
   const handleSubmit = (event) => {
-    event.preventDefault();
+    event.preventDefault();//stops page from reloading
     onSubmit(book.id, title);
   };
 
