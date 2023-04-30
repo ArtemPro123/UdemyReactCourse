@@ -1,31 +1,26 @@
-import Accordion from "./components/Accordion";
+import Dropdown from "./components/Dropdown";
+import { useState } from "react";
 
-//Anything between the tags will be passed down as children (you can also pass in components)
 function App() {
 
-  const items = [
-    {
-      id: 'asd',
-      label: 'Can I use React',
-      content: 'Yes'
-    },
-    {
-      id: 'dsa',
-      label: 'Can I use CSS',
-      content: 'No'
-    },
-    {
-      id: 'dsa1',
-      label: 'Can I use HTML',
-      content: 'No'
-    }
-  ]
+  const [selection, setSelection] = useState(null);
 
-  return <Accordion items={items}/>
- 
-}
+  const handleSelect = (option) => {
+    setSelection(option);
+  }
+
+  const options = [
+    {label: 'Red', value: 'red'},
+    {label: 'Green', value: 'green'},
+    {label: 'Blue', value: 'blue'}
+  ]
+  return (
+  <div className="flex">
+    <Dropdown options={options} value={selection} onChange={handleSelect}/>
+  </div>
+  )}
 
 export default App;
 
-// component - reusable react component that shows a handful of elements 
-// Page - Still a react component but is not meant for reuse
+//Hooks are functions that allows us to introduce new functionality
+// useRef allows access to the DOM elements it creates
