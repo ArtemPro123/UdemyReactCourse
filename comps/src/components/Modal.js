@@ -2,7 +2,7 @@ import ReactDOM from "react-dom";
 import { useEffect } from "react";
 //Portal allows to put html tags in another location on the page and not in the parent html tag
 
-function Model({onClose, children, actionBar}) {
+function Modal({onClose, children, actionBar}) {
 
   useEffect(() => {
     document.body.classList.add('overflow-hidden');
@@ -17,8 +17,8 @@ function Model({onClose, children, actionBar}) {
       <div onClick = {onClose} className="fixed inset-0 bg-gray-300 opacity-80"></div>
       <div className="fixed inset-40 p-10 bg-white"><div className="flex flex-col justify-between h-full">{children}<div className="flex justify-end">{actionBar}</div></div></div>
     </div>,
-    document.querySelector('.model-container')
+    document.querySelector('.modal-container')
   );
 }
 
-export default Model;
+export default Modal;
