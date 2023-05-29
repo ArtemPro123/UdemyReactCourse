@@ -1,14 +1,28 @@
 import { fetchUsers } from "../store"; 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from "react";
+import Skeleton from "./Skeleton";
 
 function UsersList() {
   const dispatch = useDispatch();
 
+  const {isLoading, data, error} = useSelector((state)=>{
+    return state.users; // {data: [], is loading: false, error: null}
+  })
+
   useEffect(() => {
     dispatch(fetchUsers());
   }, [dispatch]);
-  return 'Users List';
+
+  if (isLoading){
+    return <Skeleton times={6}/>
+  }
+
+  if (error){
+    return <div>Error fetching data..</div>
+  }
+
+  return <div>{data.length}</div>;
 }
 
 export default UsersList;
