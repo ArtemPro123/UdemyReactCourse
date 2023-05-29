@@ -3,6 +3,7 @@ import { changeCost, changeName, addCar } from "../store";
 
 function CarForm() {
   const dispatch = useDispatch();
+  //Accessing Values from Redux Store
   const { name, cost } = useSelector((state) => {
     return {
       name: state.form.name,
